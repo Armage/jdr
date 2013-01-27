@@ -1,4 +1,4 @@
 jdr
 ===
 
-Some php scripts I playing with. Tools for rpg.
+Some php scripts I'm playing with. Tools for rpg.
