@@ -1,0 +1,9 @@
+<?php
+
+// define your variables
+$host = "irc.freenode.net";
+$port=6667;
+$nick="a_bot_nick"; // change to something unique. this aint gonna try twice.
+$ident="a_bot";
+$chan="#a_chan";
+$realname = "a_bot_nick";

@@ -1,0 +1,372 @@
+table: pulp
+Nous sommes à la recherche de [@exploration] à qui l’on attribue [@pouvoir], dans le but de [@but]\n&
+Selon [@source_information] il se trouverait dans [@site_exploration], supposé [@peril]\n&
+Pour y parvenir, nous partirons de [@lieux] en [@locomotion] en direction de [@lieux], puis nous nous dirigerons vers [@lieux] en [@locomotion], pour traverser ensuite [@lieux] en [@locomotion].
+
+table: exploration
+l’arche d’alliance, 
+la fontaine de jouvence, 
+la toge sacrée, 
+le st graal, 
+le trésor des templiers,
+le crane de cristal,
+le squelette du chainon manquant,
+le dernier des templiers
+le dernier representant des atlantes
+la tribue d’israel perdue
+les derniers des incas
+le capitaine némo (ou son successeur)
+l’entrée de la terre creuse,
+le monastere secret de Shangrila, 
+le monde jurassique perdu, 
+le tombeau d'Alexandre
+le sceptre de Gengis Khan
+les ruines de Sodome et Gomorhe
+la cité perdue du dieu Crocodile
+Excalibur
+l'anneau de Gygès
+l'épée de Damoclès
+le bouclier de Persée
+la tête de Saint Jean Baptiste
+la couronne d'épine
+la lance de Longinus
+la Table d'Emeraude
+le caducée
+la fontaine de Jouvence
+l'Edorado
+la lévitolithe
+la veau d'or
+le fruit de la connaissance du bien et du mal
+le trésor du roi Crésus
+l'arbre de vie
+la tribu des Amazones 
+la licorne
+le yéti
+le serpent de mer
+le cimetière des éléphants
+Irem aux Colonnes
+les mines du roi Salomon
+le diamant noir
+le cor de Roland
+le pays du prêtre Jean
+la cité perdue de la Reine de Saba
+l'Atlantide
+le trésor perdu des rois de France
+la pierre philosophale
+la sainte-croix
+le vase de pandore
+la porte des enfers
+le monstre du Loch Ness
+la poule aux oeufs d'or
+les manuscrits perdus de la bibliothèque d'Alexandrie
+les plumes de l'oiseau Simurgh
+les cendres de Jeanne d'Arc
+l'épave d'un galion espagnol
+le sabre de Musashi
+le nectar et l'ambroisie
+le trésor d'Ali Baba
+la lampe d'Aladin
+une partition inconnue de Mozart
+une toile perdue de Léonard de Vinci
+le violon de Vivaldi
+le marteau de Thor
+la lyre d'Orphée
+le testament de Nicolas Flamel
+le chaudron
+l'anneau des nibellungen
+l'or du rhin
+La toison d'or
+Le trésor de Barbe Noire
+Les fragments du vase de Soisson
+Une fleur inconnue
+Un animal rare
+Une mine d'or légendaire
+Des joyaux
+Une expédition disparue
+
+
+table: pouvoir
+aucun
+le pouvoir de réveiller les morts
+la faculté de voyager sur d’autres mondes
+le pouvoir de voir dans l’avenir
+la faculté de lévitation,
+Le pouvoir de lire dans les esprits,
+la possibilité de voyager dans le temps,
+le pouvoir de détruire le métal à distance,
+l'immortalité
+l'invisibilité
+la guérison (d'une maladie rare)
+le lever une malédiction
+le pouvoir d'annuler les effets de la gravité
+le pouvoir de changer le plomb en or
+
+table: but
+aucun ( défi personnel)
+prouver un fait
+sauver une vie, une réputation...
+mettre fin a une guerre
+fomenter une révolution
+élucider un mystère
+tenir un pari
+toucher un héritage
+empêcher que l'objet ne tombe dans de mauvaises main
+dissiper une malédiction familiale
+donner un avantage a sa nation
+fournir a l'humanité un moyen de transport révolutionnaire
+explorer la lune
+faire progresser la connaissance
+devenir riche
+ajouter une pièce à sa collection
+dominer le monde
+empêcher la domination du monde
+soignez une maladie
+devenir le maître du monde
+
+table: source_information
+le professeur xx, éniment archéologue
+une équipe d'archéologue allemand
+nos espions
+un manuscrit récemment trouvé
+un courrier intercepté par
+recherche en bibliothèque
+un vieux mendiant mystérieux
+des marins dans une taverne du port
+les moines d'un vieux monastère
+d'antiques inscriptions dans les ruines de X...
+les archives du club des explorateurs
+le dernier rescapé d'une expédition, revenu a moitié fou
+un riche excentrique
+
+table: site_exploration
+la mythique cité de
+la source du nil
+les sommets de l'Himalaya
+les déserts du moyen orient
+le Soukh du Caire
+la lande écossaise
+les fonds marins des Caraïbes
+les côtes méditerranéennes
+la vallée oubliée de ....
+la cordillère des Andes
+la jungle amazonienne
+les catacombes de Paris
+les tombes de la vallée des Rois
+le temple de ....
+les canaux de Venise
+la steppe de Mongolie
+le désert de Gobi
+la Cappadoce
+les égouts de ...
+les souterrains de ...
+les grottes de ....
+les rives du Fleuve ...
+en Antarctique
+un archipel des mers du sud
+au sommet de la montagne de ...
+la ville de ...
+l'ile du Dr moreau
+le pays des aveugles
+l'ile mystérieuse
+la tougnouska
+le kilimandjaro
+la grande muraille de chine
+le désert du gobi
+
+table: peril
+les homme-singes
+les homme-lézard
+un sous sol volcanique
+un fossile vivant
+une société secrète
+une tribu hostile
+la secte des hommes léopards
+les inondations
+les éboulements 
+les bêtes sauvages
+les aléas climatiques
+la malaria
+les piqûres d'insectes
+les serpents
+des groupes de rebelles
+des contrebandiers 
+une ancienne malédiction
+des pièges instables
+des cannibales !
+des pilleurs de tombes
+des bédouins en rébellion
+des  nazis !
+des chauves souris vampires
+Le Triades
+La Maffia
+Un sorcier Vaudou
+
+table: lieux
+Londres (quartier ?)
+Paris (lieu ?)
+New York
+Chicago
+Berlin
+Venise
+Un temple Tibétain
+Kilimandjaro
+Foret vierge
+Désert de Gobi
+Toumbouctou
+une oasis
+Angkor
+Stonehenge
+Pétra
+Chichén Itzá 
+Machu Picchu
+( A mon avis on peut insérer là le nom de toutes les grandes capitales européennes.)
+Le musée du Louvre
+Une bibliothèque
+Un vieux monastère boudhiste perdu dans la brume
+La villa d'un lord anglais
+Une galerie d'art
+Une boutique d'antiquité
+Une ambassade
+Les ruines d'un temple
+Un soukh
+Un port
+La suite d'un grand hôtel
+Les coulisse de l'opera
+Le laboratoire d'un savant
+La maison d'un explorateur
+Un manoir
+le Palais du Maharadjha
+le ghetto des lépreux
+le harem du sultan ( mais les laisserez-t-il rentrer)
+la Mecque
+La plantation d'un colon (qui maltraite les indigènes ?)
+un marché (clandestin) aux esclaves
+une fumerie d'opium
+la hutte du grand chef
+La maison de Madame Chang
+un casino de Maccao
+Concession française, Shangai
+La cité interdite
+Tokyo, palais de l'empereur
+Une mission des pères blancs
+Un avant poste militaire colonial
+Un village indigène
+Le quartier général d'une société secrète
+Le palais du marahadjah
+Un bordel miteux
+Le museum d'histoire naturel
+La collection privée d'un riche particulier
+Monte Carlo
+Un salon de thé
+Une concession commerciale dans une ville coloniale
+Les entrepôts d'un riche homme d'affaire
+Une lamasserie de l'himalaya
+Un cimetière 
+Une vieille abbaye
+Un atoll polynésien
+Un refuge de montagne
+Une banque suisse
+Un phare
+Un hôpital psychiatrique
+Une grande plantation coloniale
+Une mosquée
+Les caves d'une propriété viticole du Bordelais
+Une reduccion au Paraguay
+
+
+table: locomotion
+Avion
+Paquebot
+Bateau à vapeur
+Chameau
+Caravane
+automotrice
+Zepelin
+Ballon
+sous marin
+Hydravion
+l'orient express
+un chariot de mine
+un parachute !
+Autochenille (coucou la croisière jaune)
+Cheval
+Vélo
+Yacht
+Automobile
+Fiacre
+Eléphant
+
+table: equipements
+Un revolver
+Une canne épée
+Des vêtements de sport
+Un appareil photo
+Du matériel de chimie
+Un télescope
+Un sextant
+Une boussole
+Un bâton de marche
+Un jeu de cartes
+Un microscope
+Une trousse médicale
+Une boîte à outil
+Un rossignol ( instrument de cambrioleur)
+Un phonographe
+Une lampe à pétrole
+un fouet
+un casque colonial / une ombrelle
+une paire de jumelles
+un coupe coupe
+du matériel de cartographie (papier, encre, plume, couleurs, compas, ...)
+des lunettes d'aviateurs
+un chronomètre
+un pendule
+des rations de survie
+un portulan
+le récit d'un précédent aventurier
+le sceau d'une société secrète
+une malle de voyage
+
+
+table: relations
+Un vieux prêtre
+un officier de marine
+Un vieux collectionneur handicapé
+Un antiquaire
+Le chef des mendiants d'une ville du moyen orient
+Un juge
+Un politicien
+Un professeur d'université
+Un spirite
+Un cousin très riche et qui prête de l'argent sans compter
+Un voleur de renommée mondiale
+Un scientifique expert dans son domaine
+Une ex femme
+Un vieil érudit acariâtre et immensément riche
+Un vieux scientifique original et paranoïaque
+Un milliardaire
+Les membres du club des explorateurs
+Les membres survivants d'une expédition disparue
+Un diplomate
+Un agent secret
+Un militaire 
+un "frere" (franc maçon) !
+un ancien ami devenu fonctionnaire colonial au placé
+un ancien ami, révolutionnaire devenu chef d'etat
+un cousin parti dans les colonies, aux relations troubles (trafic d'opium ?)
+Un religieux aveugle d'une abbaye des Pyrénées
+Un lama d'un lamasserie tibetaine
+Un yogi des Indes
+Le propriétaire d'une hacienda sud américaine
+Un aristocrate français, propriétaire d'une riche propriété viticole
+Une ex compagne devenue religieuse
+Un medecin
+Sherlock Holmes
+Le directeur d'un grand journal
+Un sportif
+Un ancien condisciple de l'université
+Le capitaine d'un paquebot
+Un cocher de cab londonien
+Un membre de la pègre
+Un marchand d'antiquité soupçonné de recel
+
