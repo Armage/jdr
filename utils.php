@@ -25,24 +25,36 @@ function debug($var, $msg="", $lvl=0) {
 	if (DEBUG) {
 		if (php_sapi_name() == 'cli') {
 			$space_char = " ";
-			$cr_char = "";
+			$cr_char = "\n";
 		}
 		else {
 			$space_char = "&nbsp;";
 			$cr_char = "<br />";
 		}
 
+		$tabul = str_repeat($space_char . $space_char, $lvl) ; ;
+  	
 		if (is_array($var)) {
-			echo str_repeat($space_char.$space_char, $lvl) . $msg . $cr_char . "\n" ;
+			echo $tabul."$msg (array)".$space_char.$cr_char ;
 			foreach($var as $key => $val) {
 				debug($val, "[$key]", $lvl+1) ;
 			}
 		}
+		elseif(is_object($var)) {
+			$array = array() ;
+			$array = (array)$var ;
+			echo $tabul ."$msg (object ". get_class($var) .") ".$space_char.$cr_char ;
+			debug($array, "", $lvl+1) ;
+		}
+		elseif(is_bool($var)) {
+			$boolean2string = ($var)?"TRUE":"FALSE" ;
+			echo $tabul .$msg ." (boolean):". $boolean2string .":".$space_char.$cr_char ; 
+		}
 		else {
-			echo str_repeat($space_char.$space_char, $lvl) . $space_char . $msg . " :" . $var . ":" . $cr_char . "\n" ;
-
+			echo $tabul ."$msg (". gettype($var) ."):$var:".$space_char.$cr_char ;
 		}
 	}
+  
 }
 
 function getDateFromMysqlDatetime($mysqlDatetime) {

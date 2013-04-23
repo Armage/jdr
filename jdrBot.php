@@ -49,7 +49,7 @@ class jdrBot extends armgBot {
 	}
 	
 	protected function command_help($ircMsg) {
-		$this->msgChan($ircMsg->fromChan, "Commands : !dice, !d");
+		$this->msg($ircMsg->target, "Commands : !dice, !d");
 	}
 	
 	protected function command_dice($ircMsg, $diceCommand) {
@@ -57,12 +57,13 @@ class jdrBot extends armgBot {
 		$result = $this->dt->parse($diceCommand) ;
 		debug($result->str .' = ' . $result->val, "Result") ;
 	
-		$this->msgChan($ircMsg->fromChan, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
+		//$this->msgChan($ircMsg->fromChan, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
+		$this->msg($ircMsg->target, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
 	}
 	
 	protected function command_iptlist($ircMsg) {
 		foreach ($this->iptList as $key => $list) {
-			$this->msgChan($ircMsg->fromChan, $key . " : " . $list['shortname']);
+			$this->msg($ircMsg->target, $key . " : " . $list['shortname']);
 		}
 	}
 	
@@ -73,7 +74,7 @@ class jdrBot extends armgBot {
 		$result = explode("\n", $this->iptParse($iptCommand));
 		
 		foreach($result as $line) {
-			$this->msgChan($ircMsg->fromChan, $line);
+			$this->msg($ircMsg->target, $line);
 		}
 	}
 	

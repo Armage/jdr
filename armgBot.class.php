@@ -26,6 +26,10 @@ class armgBot {
 	public function loop() {
 		while (!feof($this->socket)) {
 			$this->line = fgets($this->socket, 1024);
+			if ($this->line == '') {
+				continue;
+			}
+			
 			$this->ircMsg->parseInput($this->line);
 			
 			if($this->is_ping($this->ircMsg->command)) {
@@ -34,7 +38,7 @@ class armgBot {
 
 			if($this->is_privmsg($this->ircMsg->command)) {
 				debug("PRIVMSG...");
-				if (!$this->isForMe($this->ircMsg->param)) {
+				if (!$this->isForMe($this->ircMsg)) {
 					continue;
 				}
 				
@@ -99,14 +103,21 @@ class armgBot {
 		if ($command == 'PRIVMSG') return true;
 	}
 	
-	protected function isForMe($input) {
-		$str = explode(':', $input);
-		
-		$pattern = "/^".$this->nick."/";
-		if (preg_match($pattern,$str[1]) == 0) {
-			return false;
+	protected function isForMe($ircMsg) {
+debug($ircMsg);
+		if ($ircMsg->inQuery) {
+			return true;
 		}
-		return true;
+		else {
+			$str = explode(':', $ircMsg->msg);
+		
+			$pattern = "/^".$this->nick."/";
+			if (preg_match($pattern,$str[1]) == 0) {
+				return false;
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -153,11 +164,11 @@ class armgBot {
 // 			$msgChatIndex = 0;
 // 		}
 		
-		$this->msgChan($ircMsg->fromChan,$msgChat[0]);
+		$this->msg($ircMsg->target,$msgChat[0]);
 	}
 	
 	protected function command_help($ircMsg) {
-		$this->msgChan($ircMsg->fromChan, "Hello, I'm a bot. This is standard help message for this bot.");
+		$this->msg($ircMsg->target, "Hello, I'm a bot. This is standard help message for this bot.");
 	}
 	
 // 	function setNick($nick)						{
@@ -189,7 +200,10 @@ class IRCMsg {
 	public $command;
 	public $param;
 	
+	public $inQuery = false;
 	public $nick = '';
+	public $client = '';
+	public $domain = '';
 	public $fromChan = '';
 	public $msg = '';
 	
@@ -201,12 +215,10 @@ class IRCMsg {
 	 * @param string $input
 	 */
 	public function __construct($input='') {
-		if (empty($input)) {
-			return false;
+		if (!empty($input)) {
+			$this->input = $input;
+			$this->parseInput($this->input);
 		}
-		$this->input = $input;
-		
-		$this->parseInput($this->input);
 	}
 	
 	/**
@@ -214,8 +226,8 @@ class IRCMsg {
 	 * Parse params for somme commands
 	 * @param string $input
 	 */
-	function parseInput($input) {
-debug($input, 'Input');
+	public function parseInput($input) {
+		$this->init();
 		
 		$parts = explode($this->SEP, $input);
 		
@@ -240,22 +252,47 @@ debug($input, 'Input');
 	}
 	
 	/**
-	 * Extract nick from irc msg prefix
+	 * Extract nick, client and domain from irc msg prefix
 	 * @param string $prefix
 	 */
-	function parsePrefix($prefix) {
+	protected function parsePrefix($prefix) {
 		$this->nick = '';
 		if (strstr($prefix, '!')) {
 			list($this->nick, $tmp) = explode('!', $prefix);
+			list($this->client, $this->domain) = explode('@', $tmp);
 		}
 		return $this->nick;
 	}
 	
-	function parsePrivMsgCommand($command, $param) {
+	protected function parsePrivMsgCommand($command, $param) {
 		if ($command == 'PRIVMSG') {
 			$parts = explode($this->SEP, $param);
-			$this->fromChan = $parts[0];
-			$this->msg = join ($this->SEP, array_splice($parts, 1));
+			if ($parts[0][0] == '#') {
+				$this->fromChan = $parts[0];
+				$this->inQuery = false;
+				$this->target = $this->fromChan;
+				$this->msg = join ($this->SEP, array_splice($parts, 1));
+			}
+			else {
+				$this->fromChan = '';
+				$this->inQuery = true;
+				$this->target = $this->nick;
+				$this->msg = join ($this->SEP, $parts);
+			}
 		}
+	}
+	
+	protected function init() {
+		$this->input = '';
+		$this->prefix = '';
+		$this->command = '';
+		$this->param = '';
+	
+		$this->inQuery = false;
+		$this->nick = '';
+		$this->client = '';
+		$this->domain = '';
+		$this->fromChan = '';
+		$this->msg = '';
 	}
 }
