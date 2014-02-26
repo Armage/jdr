@@ -26,7 +26,7 @@ class DiceThrower {
         $this->text = "" ;
         $this->current = 0 ;
         
-        $dices = array();
+        $this->dices = array();
     }
 	
 	function Parse($text='') {

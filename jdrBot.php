@@ -49,16 +49,27 @@ class jdrBot extends armgBot {
 	}
 	
 	protected function command_help($ircMsg) {
-		$this->msg($ircMsg->target, "Commands : !dice, !d");
+		$this->msg($ircMsg->target, "Available commands : !dice, !d, !help");
 	}
 	
 	protected function command_dice($ircMsg, $diceCommand) {
 		debug($diceCommand,"Parsing dice command");
-		$result = $this->dt->parse($diceCommand) ;
-		debug($result->str .' = ' . $result->val, "Result") ;
-	
-		//$this->msgChan($ircMsg->fromChan, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
-		$this->msg($ircMsg->target, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
+		if (trim($diceCommand) == 'help') {
+			$this->msg($ircMsg->target, "You may launch dices with commands like '!d 1d10', '!d 2d6+4', '2e6' (explosive dices), '6d6>4' (keep dice if result > 4).");
+		}
+		else {
+			try {
+				$result = $this->dt->parse($diceCommand) ;
+				debug($result->str .' = ' . $result->val, "Result") ;
+			
+				//$this->msgChan($ircMsg->fromChan, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
+				$this->msg($ircMsg->target, $ircMsg->nick . ", ". $diceCommand . " : ".$result->str .' = '. $result->val);
+			}
+			catch(Exception $e) {
+				$this->msg($ircMsg->target, "Fatal error, command misinterpreted...");
+			}
+		}
+		
 	}
 	
 	protected function command_iptlist($ircMsg) {

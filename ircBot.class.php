@@ -1,7 +1,6 @@
 <?php
 
-
-class armgBot {
+class ircBot {
 	protected $socket, $line, $ircMsg;
 	public $nick, $ident, $realname, $host, $port;
 	
@@ -13,7 +12,6 @@ class armgBot {
 		$this->port 		= $port;
 	
 		$this->ircMsg = new IRCMsg();
-		$this->cm = new ArmgBotCommandManager();
 		
 		$this->socket = fsockopen($host, $port, $erno, $errstr, 30);
 		if(!$this->socket) die("Could not connect\r\n");
@@ -22,6 +20,10 @@ class armgBot {
 		$this->sendMsg("NICK ".$nick);
 		
 		$this->flush();
+	}
+	
+	public function joinChan($channel) { 
+		$this->sendMsg("JOIN :".$channel);
 	}
 	
 	public function loop() {
@@ -45,19 +47,8 @@ class armgBot {
 				}
 				
 				// is this a command?
-				//if($botCommand = $this->getCommand($this->ircMsg->msg)) {
-				if($botCommand = $this->cm->parseCommand($this->ircMsg->msg)) {
-					debug($botCommand['command'], "processing command");
-					$this->cm->runCommand($this->ircMsg, $botCommand['command'], $botCommand['params']);
-				}
-				else {
-					if ($this->isGreeting($this->ircMsg->msg)) {
-						$this->answerGreeting();
-					}
-					else {
-						$this->command_chat_help($this->ircMsg);
-					}
-				}
+				// ici un mecanisme qui gere les commandes envoyées au bot... suivi (normalement) d'un message sur irc (channel ou user)
+				// implémenté ailleurs que dans cet objet
 			}
 
 			$this->line = "";
@@ -87,10 +78,6 @@ class armgBot {
 		$this->sendMsg("PONG :".$this->host);
 	}
 	
-	public function joinChan($channel) { 
-		$this->sendMsg("JOIN :".$channel);
-	}
-	
 	function msg($target, $msg) {
 		$this->sendMsg("PRIVMSG $target :$msg");
 	}
@@ -106,7 +93,7 @@ class armgBot {
 	protected function is_ping($command) {
 		if ($command == 'PING') return true;
 	}
-	
+
 	protected function is_privmsg($command) {
 		if ($command == 'PRIVMSG') return true;
 	}
@@ -126,54 +113,7 @@ class armgBot {
 		}
 		return false;
 	}
-	
-	/**
-	 * Get and parse bot command, if exists
-	 * @param string $msg
-	 * @return array Keys : 'command' and 'params' or FALSE if no command
-	 */
-	//protected function getCommand($msg) {
-		//if(!strstr($msg,"!")) {
-			//return false;
-		//}
-		
-		//$botCommand = array();
-		
-		//$str = explode("!", $msg);
-		//$parts = explode(" ", $str[1]);
-		//$botCommand['command'] = trim($parts[0]);
-		//$botCommand['params'] = trim(join (" ", array_splice($parts, 1)));
-		
-		//return $botCommand;
-	//}
-	
-	//protected function parseCommand($ircMsg, $botCommand){
-		//switch($botCommand['command']) {
-			//case 'help' :
-			//default : {
-				//$this->command_help($ircMsg);
-			//}
-		//}
-	//}
-	
-	protected function command_chat_help($ircMsg, $params) {
-		static $msgChatIndex = 0;
-		$msgChat = array(
-			"I'm not a chat bot ! Please ask for command with \"!\". Like \"!help\" :)",
-			"I've already said that I'm *not* a chat bot... please give command prefixed by \"!\". Type  \"!help\" for more.",
-			"Oo !!! Is there anything you do not understand ??? Ask !help.",
-			"Oo yess, give me some order ! Just prefix all order by \"!\".",
-		);
-		
-// 		$this->msgChan($ircMsg->fromChan, $msgChat[$msgChatIndex]);
-// 		$msgChatIndex++;
-// 		if ($msgChatIndex > 3) {
-// 			$msgChatIndex = 0;
-// 		}
-		
-		$this->msg($ircMsg->target,$msgChat[0]);
-	}
-	
+
 	/**
 	 * simple politesse
 	 **/
@@ -207,37 +147,9 @@ class armgBot {
 	protected function command_help($ircMsg) {
 		$this->msg($ircMsg->target, "Hello, I'm a bot. This is standard help message for this bot.");
 	}
-	
-	/**
-	 * @param array $commandCallback must be same as format as call_user_func first param array($object, $function)
-	 **/
-	function addCommand($commandName, $commandCallback) {
-		$this->cm-addCommand($commandName, $commandCallback) ;
-	}
-	
-// 	function setNick($nick)						{
-// 		$this->out("NICK ".$nick."\r\n"); $this->nick = $nick;
-// 	}
-// 	function joinChan($channel) 			{
-// 		$this->out("JOIN :".$channel."\r\n");
-// 	}
-// 	function quitChan($channel) 			{
-// 		$this->out("PART :".$channel."\r\n");
-// 	}
-	
-// 	function listChans() 							{
-// 		$this->out("LIST\r\n");
-// 	}
-// 	function getTopic($channel)				{
-// 		$this->out("TOPIC ".$channel."\r\n");
-// 	}
-	
+
 }
 
-/**
- * Utility class : IRCMsg
- *
- */
 class IRCMsg {
 	public $input;
 	public $prefix;
